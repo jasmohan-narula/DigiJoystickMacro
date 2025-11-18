@@ -18,8 +18,9 @@ void DigiJoystickMacro::pressButtonCombinations(uint8_t lowByte, uint8_t highByt
   // PRESS A + B    =   (BUTTON_A | BUTTON_B,0,time)
   DigiJoystick.setButtons(lowByte, highByte);
   DigiJoystick.update();
+  
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(ms);
+  DigiJoystick.delay(ms);
 }
 
 void DigiJoystickMacro::releaseAllButtons(int ms) {
@@ -27,20 +28,20 @@ void DigiJoystickMacro::releaseAllButtons(int ms) {
   DigiJoystick.update();
 
   digitalWrite(LED_BUILTIN, LOW);
-  delay(ms);
+  DigiJoystick.delay(ms);
 }
 
 // ------------------------------
 // Joystick functions
 // ------------------------------
 void DigiJoystickMacro::holdStickPosition(uint8_t x, uint8_t y, int ms) {
-  // down = 0,255
+  // down = 128,255
   DigiJoystick.setX(x);
   DigiJoystick.setY(y);
   DigiJoystick.update();
 
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(ms);
+  DigiJoystick.delay(ms);
 }
 
 void DigiJoystickMacro::centerStick(int ms) {
@@ -48,6 +49,11 @@ void DigiJoystickMacro::centerStick(int ms) {
   DigiJoystick.setY(CENTER);
   DigiJoystick.update();
 
+  // Minimum time, to stop USB Stack from overloading 
+  if (ms < 100) {
+    ms = 100;
+  }
+
   digitalWrite(LED_BUILTIN, LOW);
-  delay(ms);
+  DigiJoystick.delay(ms);
 }
