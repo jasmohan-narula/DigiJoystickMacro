@@ -50,9 +50,9 @@ void DigiJoystickMacro::centerStick(int ms) {
   DigiJoystick.update();
 
   // Minimum time, to stop USB Stack from overloading 
-  if (ms < 100) {
-    ms = 100;
-  }
+  // if (ms < 100) {
+  //   ms = 100;
+  // }
 
   digitalWrite(LED_BUILTIN, LOW);
   DigiJoystick.delay(ms);

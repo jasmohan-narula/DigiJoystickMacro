@@ -19,4 +19,5 @@
 //#include "examples/ExampleMacro.cpp"
 //#include "examples/ContinouslyPressA.cpp"
 //#include "examples/HID_Joystick_Calibration.cpp"
-#include "examples/PLZA_BenchMethod.cpp"
+//#include "examples/PLZA_BenchMethod.cpp"
+#include "examples/PLZA_AutoBattles.cpp"
